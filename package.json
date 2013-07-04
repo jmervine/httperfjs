@@ -1,0 +1,25 @@
+{
+  "name": "httperfjs",
+  "version": "0.0.1",
+  "description": "Node.js binding for HTTPerf",
+  "keywords": [
+    "httperf",
+    "performance"
+  ],
+  "repository": "git://github.com/jmervine/httperfjs.git",
+  "author": "Joshua Mervine <joshua@mervine.net>",
+  "main": "index",
+  "devDependencies": {
+    "nodeunit": "*",
+    "istanbul": "~0.1.39"
+  },
+  "engines": {
+    "node": ">= 0.10.12"
+  },
+  "dependencies": {
+    "exec-sync": "~0.1.6"
+  },
+  "scripts": {
+    "test": "make tests"
+  }
+}

@@ -1,0 +1,364 @@
+#!/bin/bash
+if echo $@ | grep 'verbose' 2>&1 /dev/null
+then
+echo "$(basename $0) $@
+httperf: maximum number of open descriptors = 1024
+RT0:164.054871	200
+Connection lifetime = 164.5
+RT1:532.962084	200
+Connection lifetime = 532.5
+RT2:257.379055	200
+Connection lifetime = 257.5
+RT3:440.126896	200
+Connection lifetime = 440.5
+RT4:660.751104	200
+Connection lifetime = 660.5
+RT5:139.378786	200
+Connection lifetime = 139.5
+RT6:144.936085	200
+Connection lifetime = 144.5
+RT7:418.461084	200
+Connection lifetime = 418.5
+RT8:255.043030	200
+Connection lifetime = 255.5
+RT9:160.689831	200
+Connection lifetime = 160.5
+RT10:428.452015	200
+Connection lifetime = 428.5
+RT11:153.122187	200
+Connection lifetime = 153.5
+RT12:695.820808	200
+Connection lifetime = 695.5
+RT13:161.413193	200
+Connection lifetime = 161.5
+RT14:165.160894	200
+Connection lifetime = 165.5
+RT15:160.202980	200
+Connection lifetime = 160.5
+reply-rate = 3.2
+RT16:206.342936	200
+Connection lifetime = 206.5
+RT17:172.633171	200
+Connection lifetime = 172.5
+RT18:392.226934	200
+Connection lifetime = 392.5
+RT19:152.445078	200
+Connection lifetime = 152.5
+RT20:143.802881	200
+Connection lifetime = 143.5
+RT21:135.888100	200
+Connection lifetime = 135.5
+RT22:391.423941	200
+Connection lifetime = 391.5
+RT23:142.564058	200
+Connection lifetime = 142.5
+RT24:139.175892	200
+Connection lifetime = 139.5
+RT25:146.286964	200
+Connection lifetime = 146.5
+RT26:385.911942	200
+Connection lifetime = 385.5
+RT27:500.527143	200
+Connection lifetime = 500.5
+RT28:290.349007	200
+Connection lifetime = 290.5
+RT29:141.918898	200
+Connection lifetime = 141.5
+RT30:291.085958	200
+Connection lifetime = 291.5
+RT31:137.889147	200
+Connection lifetime = 137.5
+RT32:288.292885	200
+Connection lifetime = 288.5
+RT33:138.436079	200
+Connection lifetime = 138.5
+RT34:284.863949	200
+Connection lifetime = 284.5
+RT35:283.437967	200
+Connection lifetime = 283.5
+RT36:149.239063	200
+Connection lifetime = 149.5
+reply-rate = 4.2
+RT37:288.504124	200
+Connection lifetime = 288.5
+RT38:138.604879	200
+Connection lifetime = 138.5
+RT39:292.285919	200
+Connection lifetime = 292.5
+RT40:137.781143	200
+Connection lifetime = 137.5
+RT41:285.260916	200
+Connection lifetime = 285.5
+RT42:141.850948	200
+Connection lifetime = 141.5
+RT43:286.570072	200
+Connection lifetime = 286.5
+RT44:138.684034	200
+Connection lifetime = 138.5
+RT45:287.760973	200
+Connection lifetime = 287.5
+RT46:289.455891	200
+Connection lifetime = 289.5
+RT47:178.175211	200
+Connection lifetime = 178.5
+RT48:328.647852	200
+Connection lifetime = 328.5
+RT49:144.082069	200
+Connection lifetime = 144.5
+RT50:291.280031	200
+Connection lifetime = 291.5
+RT51:138.470888	200
+Connection lifetime = 138.5
+RT52:289.855957	200
+Connection lifetime = 289.5
+RT53:135.639191	200
+Connection lifetime = 135.5
+RT54:289.345026	200
+Connection lifetime = 289.5
+RT55:137.350798	200
+Connection lifetime = 137.5
+RT56:330.978155	200
+Connection lifetime = 330.5
+RT57:323.415041	200
+Connection lifetime = 323.5
+RT58:145.509005	200
+Connection lifetime = 145.5
+reply-rate = 4.4
+RT59:294.952869	200
+Connection lifetime = 294.5
+RT60:142.269135	200
+Connection lifetime = 142.5
+RT61:138.293982	200
+Connection lifetime = 138.5
+RT62:388.613939	200
+Connection lifetime = 388.5
+RT63:140.385866	200
+Connection lifetime = 140.5
+RT64:294.457197	200
+Connection lifetime = 294.5
+RT65:139.772892	200
+Connection lifetime = 139.5
+RT66:303.258896	200
+Connection lifetime = 303.5
+RT67:141.956091	200
+Connection lifetime = 141.5
+RT68:298.655033	200
+Connection lifetime = 298.5
+RT69:136.940002	200
+Connection lifetime = 136.5
+RT70:688.719034	200
+Connection lifetime = 688.5
+RT71:140.038967	200
+Connection lifetime = 140.5
+RT72:138.895988	200
+Connection lifetime = 138.5
+RT73:417.140961	200
+Connection lifetime = 417.5
+RT74:145.699024	200
+Connection lifetime = 145.5
+RT75:141.577005	200
+Connection lifetime = 141.5
+RT76:416.074991	200
+Connection lifetime = 416.5
+RT77:142.570019	200
+Connection lifetime = 142.5
+RT78:143.624067	200
+Connection lifetime = 143.5
+reply-rate = 4.0
+RT79:426.810026	200
+Connection lifetime = 426.5
+RT80:149.154902	200
+Connection lifetime = 149.5
+RT81:148.390055	200
+Connection lifetime = 148.5
+RT82:152.786016	200
+Connection lifetime = 152.5
+RT83:409.765005	200
+Connection lifetime = 409.5
+RT84:147.444010	200
+Connection lifetime = 147.5
+RT85:144.798994	200
+Connection lifetime = 144.5
+RT86:177.811861	200
+Connection lifetime = 177.5
+RT87:417.634010	200
+Connection lifetime = 417.5
+RT88:263.844967	200
+Connection lifetime = 263.5
+RT89:169.666052	200
+Connection lifetime = 169.5
+RT90:311.697006	200
+Connection lifetime = 311.5
+RT91:671.070099	200
+Connection lifetime = 671.5
+RT92:163.714886	200
+Connection lifetime = 163.5
+RT93:469.439983	200
+Connection lifetime = 469.5
+RT94:140.473127	200
+Connection lifetime = 140.5
+RT95:167.948961	200
+Connection lifetime = 167.5
+RT96:169.555902	200
+Connection lifetime = 169.5
+RT97:164.805174	200
+Connection lifetime = 164.5
+RT98:162.867785	200
+Connection lifetime = 162.5
+RT99:173.114061	200
+Connection lifetime = 173.5
+Maximum connect burst length: 1
+
+Connection lifetime histogram (time in ms):
+             :
+           135.5 2
+           136.5 1
+           137.5 3
+           138.5 6
+           139.5 3
+           140.5 3
+           141.5 4
+           142.5 3
+           143.5 2
+           144.5 3
+           145.5 2
+           146.5 1
+           147.5 1
+           148.5 1
+           149.5 2
+             :
+           152.5 2
+           153.5 1
+             :
+           160.5 2
+           161.5 1
+           162.5 1
+           163.5 1
+           164.5 2
+           165.5 1
+             :
+           167.5 1
+             :
+           169.5 2
+             :
+           172.5 1
+           173.5 1
+             :
+           177.5 1
+           178.5 1
+             :
+           206.5 1
+             :
+           255.5 1
+             :
+           257.5 1
+             :
+           263.5 1
+             :
+           283.5 1
+           284.5 1
+           285.5 1
+           286.5 1
+           287.5 1
+           288.5 2
+           289.5 3
+           290.5 1
+           291.5 2
+           292.5 1
+             :
+           294.5 2
+             :
+           298.5 1
+             :
+           303.5 1
+             :
+           311.5 1
+             :
+           323.5 1
+             :
+           328.5 1
+             :
+           330.5 1
+             :
+           385.5 1
+             :
+           388.5 1
+             :
+           391.5 1
+           392.5 1
+             :
+           409.5 1
+             :
+           416.5 1
+           417.5 2
+           418.5 1
+             :
+           426.5 1
+             :
+           428.5 1
+             :
+           440.5 1
+             :
+           469.5 1
+             :
+           500.5 1
+             :
+           532.5 1
+             :
+           660.5 1
+             :
+           671.5 1
+             :
+           688.5 1
+             :
+           695.5 1
+
+Total: connections 100 requests 100 replies 100 test-duration 24.869 s
+
+Connection rate: 4.0 conn/s (248.7 ms/conn, <=1 concurrent connections)
+Connection time [ms]: min 135.6 avg 248.7 max 695.8 median 169.5 stddev 137.2
+Connection time [ms]: connect 0.1
+Connection length [replies/conn]: 1.000
+
+Request rate: 4.0 req/s (248.7 ms/req)
+Request size [B]: 78.0
+
+Reply rate [replies/s]: min 3.2 avg 3.9 max 4.4 stddev 0.5 (4 samples)
+Reply time [ms]: response 239.3 transfer 9.3
+Reply size [B]: header 1092.0 content 195954.0 footer 2.0 (total 197048.0)
+Reply status: 1xx=0 2xx=100 3xx=0 4xx=0 5xx=0
+
+CPU time [s]: user 0.01 system 0.04 (user 0.0% system 0.2% total 0.2%)
+Net I/O: 774.1 KB/s (6.3*10^6 bps)
+
+Errors: total 0 client-timo 0 socket-timo 0 connrefused 0 connreset 0
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
+"
+else
+echo "$(basename $0) $@
+httperf: warning: open file limit > FD_SETSIZE; limiting max. # of open files to FD_SETSIZE
+Maximum connect burst length: 0
+
+Total: connections 1 requests 1 replies 1 test-duration 0.000 s
+
+Connection rate: 4524.6 conn/s (0.2 ms/conn, <=1 concurrent connections)
+Connection time [ms]: min 0.2 avg 0.2 max 0.2 median 0.5 stddev 0.0
+Connection time [ms]: connect 0.1
+Connection length [replies/conn]: 1.000
+
+Request rate: 4524.6 req/s (0.2 ms/req)
+Request size [B]: 62.0
+
+Reply rate [replies/s]: min 0.0 avg 0.0 max 0.0 stddev 0.0 (0 samples)
+Reply time [ms]: response 0.1 transfer 0.0
+Reply size [B]: header 154.0 content 168.0 footer 0.0 (total 322.0)
+Reply status: 1xx=0 2xx=0 3xx=0 4xx=1 5xx=0
+
+CPU time [s]: user 0.00 system 0.00 (user 0.0% system 0.0% total 0.0%)
+Net I/O: 1696.7 KB/s (13.9*10^6 bps)
+
+Errors: total 0 client-timo 0 socket-timo 0 connrefused 0 connreset 0
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
+"
+fi
+# vim: filetype=sh:
