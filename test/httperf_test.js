@@ -37,9 +37,9 @@ module.exports = {
 
     parse: function (test) {
         var h = new HTTPerf(default_options);
-        test.equal(false, h.parse);
-        h.parse = true;
         test.ok(h.parse);
+        h.parse = false;
+        test.equal(false, h.parse);
         test.expect(2);
         test.done();
     },
@@ -54,6 +54,7 @@ module.exports = {
 
     run_without_parse: function (test) {
         var h = new HTTPerf(default_options);
+        h.parse = false;
         test.ok( h.run().indexOf("httperf --server=localhost --port=80") === 0 );
         test.ok( h.run().indexOf("Connection time [ms]: min 0.2 avg 0.2 max 0.2 median 0.5 stddev 0.0") !== -1 );
         test.expect(2);
@@ -62,7 +63,6 @@ module.exports = {
 
     run_with_prase: function (test) {
         var h = new HTTPerf(default_options);
-        h.parse = true;
         test.ok( h.run().results );
         test.ok( h.run().results.command );
         test.ok( h.run().results.connection_time_avg );
