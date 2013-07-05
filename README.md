@@ -8,11 +8,11 @@ works pretty much the same way.
 > - `parse` is true by default.
 > - `#fork` isn't currently supported.
 > - `tee` isn't currently supported.
->
+> - `httperf` must be in your `PATH`
 
 ### Node.js Version
 
-Tests are currently being run and passing on the following versions:
+[![Build Status](https://travis-ci.org/jmervine/httperfjs.png?branch=master)](https://travis-ci.org/jmervine/httperfjs) for the following node versions:
 - 0.10.12
 - 0.8.25
 - 0.6.21
