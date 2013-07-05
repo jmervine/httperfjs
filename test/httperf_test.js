@@ -63,9 +63,9 @@ module.exports = {
 
     run_with_prase: function (test) {
         var h = new HTTPerf(default_options);
-        test.ok( h.run().results );
-        test.ok( h.run().results.command );
-        test.ok( h.run().results.connection_time_avg );
+        test.ok( h.run() );
+        test.ok( h.run().command );
+        test.ok( h.run().connection_time_avg );
         test.expect(3);
         test.done();
     },

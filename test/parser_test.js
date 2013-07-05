@@ -24,31 +24,31 @@ module.exports = {
     },
 
     calculate_percentiles: function (test) {
-        test.equal(10, parser.calculate_percentiles(85, [10]));
-        test.equal(10, parser.calculate_percentiles(85, [1,10]));
-        test.equal(85, parser.calculate_percentiles(85, bigArray()));
+        test.equal(10, Parser.prototype.calculate_percentiles(85, [10]));
+        test.equal(10, Parser.prototype.calculate_percentiles(85, [1,10]));
+        test.equal(85, Parser.prototype.calculate_percentiles(85, bigArray()));
         test.expect(3);
         test.done();
     },
 
     expressions: function (test) {
-        test.equal(50, Object.keys(parser.expressions).length);
+        test.equal(50, Object.keys(Parser.prototype.expressions).length);
         test.done();
     },
 
     results_without_verbose: function (test) {
-        test.ok(parser.results);
-        test.ok(parser.results.connection_time_avg);
+        test.ok(parser);
+        test.ok(parser.connection_time_avg);
         test.expect(2);
         test.done();
     },
 
     results_with_verbose: function (test) {
         var vparser = new Parser(vstub);
-        test.ok(vparser.results);
-        test.ok(vparser.results.connection_time_avg);
-        test.ok(vparser.results.connection_times);
-        test.ok(vparser.results.connection_time_85_pct);
+        test.ok(vparser);
+        test.ok(vparser.connection_time_avg);
+        test.ok(vparser.connection_times);
+        test.ok(vparser.connection_time_85_pct);
         test.expect(4);
         test.done();
     }
