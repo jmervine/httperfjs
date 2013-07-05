@@ -30,14 +30,31 @@ Tests are currently being run and passing on the following versions:
     );
 
     var first_run = httperf.run();
+    first_run
     // => { object with httperf values }
+
+    httperf.results
+    // => { object with httperf values }
+
+    first_run.connection_time_avg
+    // => '123.4'
 
     httperf.update_option("uri", "/quotes");
 
     var second_run = httperf.run();
+    second_run
     // => { object with httperf values }
+
+    second_run.connection_time_avg
+    // => '123.4'
 
     httperf.parse = false;
     var third_run = httperf.run();
+    third_run
     // => "string with httperf stdout"
+
+    httperf.results
+    // => "string with httperf stdout"
+
+
 
