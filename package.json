@@ -14,7 +14,7 @@
     "istanbul": "~0.1.39"
   },
   "engines": {
-    "node": ">= 0.10.12"
+    "node": ">= 0.6"
   },
   "dependencies": {
     "exec-sync": "~0.1.6"
