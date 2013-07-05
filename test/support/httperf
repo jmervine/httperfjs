@@ -1,9 +1,13 @@
 #!/bin/bash
+function STDERR () {
+  cat - 1>&2
+}
+
 if echo $@ | grep 'verbose' 2>&1 /dev/null
 then
-echo "$(basename $0) $@
-httperf: maximum number of open descriptors = 1024
-RT0:164.054871	200
+echo "$(basename $0) $@"
+echo "httperf: warning: open file limit > FD_SETSIZE; limiting max. # of open files to FD_SETSIZE" | STDERR
+echo "RT0:164.054871	200
 Connection lifetime = 164.5
 RT1:532.962084	200
 Connection lifetime = 532.5
@@ -335,9 +339,9 @@ Errors: total 0 client-timo 0 socket-timo 0 connrefused 0 connreset 0
 Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
 "
 else
-echo "$(basename $0) $@
-httperf: warning: open file limit > FD_SETSIZE; limiting max. # of open files to FD_SETSIZE
-Maximum connect burst length: 0
+echo "$(basename $0) $@"
+echo "httperf: warning: open file limit > FD_SETSIZE; limiting max. # of open files to FD_SETSIZE" | STDERR
+echo "Maximum connect burst length: 0
 
 Total: connections 1 requests 1 replies 1 test-duration 0.000 s
 
