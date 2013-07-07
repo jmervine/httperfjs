@@ -7,8 +7,8 @@
     "performance"
   ],
   "repository": "git://github.com/jmervine/httperfjs.git",
-  "author": "Joshua Mervine <joshua@mervine.net>",
-  "main": "index",
+  "author": "Joshua Mervine <joshua@mervine.net> (http://mervine.net)",
+  "main": "./lib/httperf.js",
   "devDependencies": {
     "nodeunit": "*",
     "istanbul": "~0.1.39"
