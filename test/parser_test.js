@@ -17,13 +17,13 @@ var vstub = readFileSync("./test/support/dummy_verbose_results.txt").toString();
 var parser = new Parser(rstub);
 
 module.exports = {
-    initialize: function (test) {
+    "new Parser(httperf_result_string)": function (test) {
         test.ok(parser);
         test.expect(1);
         test.done();
     },
 
-    calculate_percentiles: function (test) {
+    "#calculate_percentiles": function (test) {
         test.equal(10, Parser.prototype.calculate_percentiles(85, [10]));
         test.equal(10, Parser.prototype.calculate_percentiles(85, [1,10]));
         test.equal(85, Parser.prototype.calculate_percentiles(85, bigArray()));
@@ -31,19 +31,19 @@ module.exports = {
         test.done();
     },
 
-    expressions: function (test) {
+    "#expressions": function (test) {
         test.equal(50, Object.keys(Parser.prototype.expressions).length);
         test.done();
     },
 
-    results_without_verbose: function (test) {
+    "#results -- without verbose": function (test) {
         test.ok(parser);
         test.ok(parser.connection_time_avg);
         test.expect(2);
         test.done();
     },
 
-    results_with_verbose: function (test) {
+    "#results -- with verbose": function (test) {
         var vparser = new Parser(vstub);
         test.ok(vparser);
         test.ok(vparser.connection_time_avg);

@@ -10,7 +10,7 @@ var default_options = {
 };
 
 module.exports = {
-    "new HTTPerf": function (test) {
+    "new HTTPerf(options)": function (test) {
         var h = new HTTPerf(default_options);
         test.equal('localhost', h.params.server);
         test.equal('80', h.params.port);
@@ -52,6 +52,16 @@ module.exports = {
         test.done();
     },
 
+    "#runSync -- with parse": function (test) {
+        var h = new HTTPerf(default_options);
+        var result = h.runSync();
+        test.ok( result );
+        test.ok( result.command );
+        test.ok( result.connection_time_avg );
+        test.expect(3);
+        test.done();
+    },
+
     "#runSync -- without parse": function (test) {
         var h = new HTTPerf(default_options);
         h.parse = false;
@@ -62,14 +72,27 @@ module.exports = {
         test.done();
     },
 
-    "#runSync -- with parse": function (test) {
-        var h = new HTTPerf(default_options);
-        var result = h.runSync();
-        test.ok( result );
-        test.ok( result.command );
-        test.ok( result.connection_time_avg );
+    "#run -- with parse": function (test) {
         test.expect(3);
-        test.done();
+        var h = new HTTPerf(default_options);
+        h.run( function (result) {
+            test.ok(result);
+            test.ok(result.command);
+            test.ok(result.connection_time_avg);
+            test.done();
+        });
+    },
+
+    "#run -- without parse": function (test) {
+        test.expect(3);
+        var h = new HTTPerf(default_options);
+        h.parse = false;
+        h.run( function (result) {
+            test.ok(result);
+            test.ok(result.indexOf("httperf --server=localhost --port=80") === 0 );
+            test.ok(result.indexOf("Connection time [ms]: min 0.2 avg 0.2 max 0.2 median 0.5 stddev 0.0") !== -1 );
+            test.done();
+        });
     },
 };
 // vim: ft=javascript
