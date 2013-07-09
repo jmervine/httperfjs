@@ -1,3 +1,3 @@
 # HTTPerf.js
 
-### See: [mervine.net/npms/httperfjs](http://mervine.net/npms/httperfjs).
+### See: [mervine.net/projects/npms/httperfjs](http://mervine.net/projects/npms/httperfjs).
