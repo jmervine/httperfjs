@@ -19,9 +19,10 @@ works pretty much the same way.
 ### Node.js Version
 
 [![Build Status](https://travis-ci.org/jmervine/httperfjs.png?branch=master)](https://travis-ci.org/jmervine/httperfjs) for the following node versions:
-- 0.10.12
-- 0.8.25
-- 0.6.21
+
+- 0.6
+- 0.8
+- 0.10
 
 > I have only actually used this on `0.10.12`.
 
