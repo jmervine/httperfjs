@@ -85,10 +85,6 @@ works pretty much the same way.
     var run;
 
     module.exports = {
-        //setUp: function (callback) {
-            //callback();
-        //},
-
         tearDown: function (callback) {
             run = undefined;
             callback();
