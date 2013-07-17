@@ -40,32 +40,81 @@ works pretty much the same way.
         "num-conns": 100}
     );
 
-    var first_run = httperf.run();
-    first_run
+    var first_run = httperf.runSyn();
+    console.log(first_run);
     // => { object with httperf values }
 
-    httperf.results
+    console.log(httperf.results);
     // => { object with httperf values }
 
-    first_run.connection_time_avg
+    console.log(first_run.connection_time_avg);
     // => '123.4'
 
     httperf.update_option("uri", "/quotes");
 
-    var second_run = httperf.run();
-    second_run
+    httperf.run(function (result) {
+        console.log(result);
+        console.log(result.connection_time_avg);
+    });
     // => { object with httperf values }
-
-    second_run.connection_time_avg
     // => '123.4'
 
     httperf.parse = false;
-    var third_run = httperf.run();
-    third_run
+    httperf.run(function (result) {
+        httperf.result = result;
+        console.log(result);
+    });
     // => "string with httperf stdout"
 
-    httperf.results
+    console.log(httperf.results);
     // => "string with httperf stdout"
+
+
+#### NodeUnit Benchmark Example
+
+    :::js
+    // file: ./test/benchmark.js
+    var HTTPerf = require('httperfjs');
+    var httperf = new HTTPerf({
+        server:      "mervine.net",
+        uri:         "/",
+        "num-conns": 9
+    });
+
+    var run;
+
+    module.exports = {
+        //setUp: function (callback) {
+            //callback();
+        //},
+
+        tearDown: function (callback) {
+            run = undefined;
+            callback();
+        },
+
+        'homepage should be quick': function (test) {
+            test.expect(1);
+            run = httperf.runSync();
+
+            test.ok(run.connection_time_avg < 200,
+                "homepage was too slow: got " + run.connection_time_avg
+                   + " but expected: < 200");
+            test.done();
+        },
+
+        'archive should be quick': function (test) {
+            test.expect(1);
+            httperf.update_option("uri", "/archive");
+            run = httperf.runSync();
+
+            test.ok(run.connection_time_median < 200,
+                "archive was too slow: got " + run.connection_time_avg
+                    + " but expected: < 200");
+            test.done();
+        }
+    };
+    // $ ./node_modules/.bin/nodeunit ./test/benchmark.js
 
 
 #### Parser Keys:

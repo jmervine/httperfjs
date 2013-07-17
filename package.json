@@ -1,6 +1,6 @@
 {
   "name": "httperfjs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node.js binding for HTTPerf",
   "keywords": [
     "httperf",
@@ -20,6 +20,6 @@
     "exec-sync": "~0.1.6"
   },
   "scripts": {
-    "test": "make tests"
+    "test": "make unit"
   }
 }
