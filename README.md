@@ -94,8 +94,8 @@ works pretty much the same way.
             test.expect(1);
             run = httperf.runSync();
 
-            test.ok(run.connection_time_avg < 200,
-                "homepage was too slow: got " + run.connection_time_avg
+            test.ok(run.connection_time_median < 200,
+                "homepage was too slow: got " + run.connection_time_median
                    + " but expected: < 200");
             test.done();
         },
