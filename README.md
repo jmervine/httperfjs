@@ -1,6 +1,6 @@
 # HTTPerf.js
 
-[![Build Status](https://travis-ci.org/jmervine/httperfjs.png?branch=master)](https://travis-ci.org/jmervine/httperfjs) &npsb; [![Dependancy Status](https://david-dm.org/jmervine/httperfjs.png)](https://david-dm.org/jmervine/httperfjs) &nbsp; [![NPM Version](https://badge.fury.io/js/httperfjs.png)(https://badge.fury.io/js/httperfjs)
+[![Build Status](https://travis-ci.org/jmervine/httperfjs.png?branch=master)](https://travis-ci.org/jmervine/httperfjs) &nbsp; [![Dependancy Status](https://david-dm.org/jmervine/httperfjs.png)](https://david-dm.org/jmervine/httperfjs) &nbsp; [![NPM Version](https://badge.fury.io/js/httperfjs.png)](https://badge.fury.io/js/httperfjs)
 
 Simple Node.js interface for httperf. This is a node port of [HTTPerf.rb](http://mervine.net/gems/httperfrb) and
 works pretty much the same way.
