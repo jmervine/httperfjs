@@ -1,6 +1,6 @@
 {
   "name": "httperfjs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Node.js binding for HTTPerf",
   "keywords": [
     "httperf",

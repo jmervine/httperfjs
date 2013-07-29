@@ -5,6 +5,8 @@ process.env.PATH = "./test/support:"+process.env.PATH;
 var default_options = {
     'server'    : "localhost",
     'port'      : 80,
+    'verbose'   : true,
+    'hog'       : true,
     'uri'       : "/foo?foo=bar&bar=foo",
     'num-conns' : 10
 };
@@ -21,7 +23,7 @@ module.exports = {
 
     "#command": function (test) {
         var h = new HTTPerf(default_options);
-        test.equal("httperf --server=localhost --port=80 --uri='/foo?foo=bar&bar=foo' --num-conns=10",
+        test.equal("httperf --server=localhost --port=80 --verbose --hog --uri='/foo?foo=bar&bar=foo' --num-conns=10",
                         h.command());
         test.expect(1);
         test.done();
@@ -29,7 +31,7 @@ module.exports = {
 
     "#paramsToString": function (test) {
         var h = new HTTPerf(default_options);
-        test.equal('--server=localhost --port=80 --uri=\'/foo?foo=bar&bar=foo\' --num-conns=10',
+        test.equal('--server=localhost --port=80 --verbose --hog --uri=\'/foo?foo=bar&bar=foo\' --num-conns=10',
                     h.paramsToString());
         test.expect(1);
         test.done();
