@@ -39,6 +39,8 @@ Tested on the following node versions (via [Travis-ci.org](http://travis-ci.org/
 
     var httperf = new HTTPerf({
         "server": "mervine.net",
+        "verbose": true,
+        "hog": true,
         "uri": "/about",
         "num-conns": 100}
     );
