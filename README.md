@@ -45,7 +45,10 @@ Tested on the following node versions (via [Travis-ci.org](http://travis-ci.org/
         "num-conns": 100}
     );
 
-    var first_run = httperf.runSyn();
+    // Note:runSync is far less efficent because of
+    // how execSync.exec works. I do not recommend it
+    // when running larger/longer tests.
+    var first_run = httperf.runSync();
     console.log(first_run);
     // => { object with httperf values }
 
@@ -96,23 +99,22 @@ Tested on the following node versions (via [Travis-ci.org](http://travis-ci.org/
 
         'homepage should be quick': function (test) {
             test.expect(1);
-            run = httperf.runSync();
-
-            test.ok(run.connection_time_median < 200,
-                "homepage was too slow: got " + run.connection_time_median
-                   + " but expected: < 200");
-            test.done();
+            httperf.run( function (run) {
+                test.ok(run.connection_time_median < 200,
+                    "homepage was too slow: got " + run.connection_time_median
+                       + " but expected: < 200");
+                test.done();
+            });
         },
 
         'archive should be quick': function (test) {
             test.expect(1);
-            httperf.update_option("uri", "/archive");
-            run = httperf.runSync();
-
-            test.ok(run.connection_time_median < 200,
-                "archive was too slow: got " + run.connection_time_avg
-                    + " but expected: < 200");
-            test.done();
+            httperf.run( function (run) {
+                test.ok(run.connection_time_median < 200,
+                    "archive was too slow: got " + run.connection_time_avg
+                        + " but expected: < 200");
+                test.done();
+            });
         }
     };
     // $ ./node_modules/.bin/nodeunit ./test/benchmark.js
