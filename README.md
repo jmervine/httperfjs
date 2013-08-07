@@ -22,7 +22,6 @@ works pretty much the same way.
 
 Tested on the following node versions (via [Travis-ci.org](http://travis-ci.org/):
 
-- 0.6
 - 0.8
 - 0.10
 

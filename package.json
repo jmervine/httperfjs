@@ -14,7 +14,7 @@
     "istanbul": "~0.1.39"
   },
   "engines": {
-    "node": ">= 0.6"
+    "node": ">= 0.8"
   },
   "dependencies": {
     "execSync": "~1.0.1-pre"
