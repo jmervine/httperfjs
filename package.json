@@ -1,6 +1,6 @@
 {
   "name": "httperfjs",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Node.js binding for HTTPerf",
   "keywords": [
     "httperf",
@@ -10,8 +10,7 @@
   "author": "Joshua Mervine <joshua@mervine.net> (http://mervine.net)",
   "main": "./lib/httperf.js",
   "devDependencies": {
-    "nodeunit": "*",
-    "istanbul": "~0.1.39"
+    "tape": "^2.5.0"
   },
   "engines": {
     "node": ">= 0.8"
@@ -20,6 +19,7 @@
     "execSync": "~1.0.1-pre"
   },
   "scripts": {
-    "test": "make unit"
+    "test": "tape ./test/*_test.js",
+    "int": "node ./test/integration.js"
   }
 }

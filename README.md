@@ -8,7 +8,6 @@ works pretty much the same way.
 > What hasn't been ported or is different from the [ruby version](http://mervine.net/gems/httperfrb):
 >
 > - `parse` is true by default.
-> - `#fork` isn't currently supported.
 > - `tee` isn't currently supported.
 > - `httperf` must be in your `PATH`
 
@@ -24,8 +23,7 @@ Tested on the following node versions (via [Travis-ci.org](http://travis-ci.org/
 
 - 0.8
 - 0.10
-
-> I have only actually used this on `0.10.12`.
+- 0.11
 
 ### Installation
 
@@ -47,6 +45,8 @@ Tested on the following node versions (via [Travis-ci.org](http://travis-ci.org/
     // Note:runSync is far less efficent because of
     // how execSync.exec works. I do not recommend it
     // when running larger/longer tests.
+    //
+    // This might be removed in a future release.
     var first_run = httperf.runSync();
     console.log(first_run);
     // => { object with httperf values }
@@ -67,14 +67,17 @@ Tested on the following node versions (via [Travis-ci.org](http://travis-ci.org/
     // => '123.4'
 
     httperf.parse = false;
-    httperf.run(function (result) {
-        httperf.result = result;
+    var child = httperf.run(function (result) {
         console.log(result);
     });
     // => "string with httperf stdout"
 
-    console.log(httperf.results);
-    // => "string with httperf stdout"
+    // httperf dumps data on SIGINT (crtl-c), HTTPerf's run
+    // supports this as well, with the following addition
+    // to your scripts
+    process.on('SIGINT', function() {
+        child.send('SIGINT');
+    });
 
 
 #### NodeUnit Benchmark Example

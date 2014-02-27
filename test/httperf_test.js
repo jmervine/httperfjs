@@ -1,4 +1,5 @@
-var HTTPerf = require('lib/httperf');
+var HTTPerf = require('../lib/httperf');
+var tape = require('tape');
 
 process.env.PATH = "./test/support:"+process.env.PATH;
 
@@ -11,91 +12,71 @@ var default_options = {
     'num-conns' : 10
 };
 
-module.exports = {
-    "new HTTPerf(options)": function (test) {
-        var h = new HTTPerf(default_options);
-        test.equal('localhost', h.params.server);
-        test.equal('80', h.params.port);
-        test.equal('/foo?foo=bar&bar=foo' , h.params.uri);
-        test.equal('10', h.params['num-conns']);
-        test.done();
-    },
+var httperf = new HTTPerf(default_options);
+var httperf_san_parse = new HTTPerf(default_options);
+httperf_san_parse.parse = false;
 
-    "#command": function (test) {
-        var h = new HTTPerf(default_options);
-        test.equal("httperf --server=localhost --port=80 --verbose --hog --uri='/foo?foo=bar&bar=foo' --num-conns=10",
-                        h.command());
-        test.expect(1);
-        test.done();
-    },
+tape('HTTPerf', function(group) {
+    group.test('command', function(test) {
+        test.equal(httperf.command(),
+            "httperf --server=localhost --port=80 --verbose --hog --uri='/foo?foo=bar&bar=foo' --num-conns=10");
+        test.end();
+    });
 
-    "#paramsToString": function (test) {
-        var h = new HTTPerf(default_options);
-        test.equal('--server=localhost --port=80 --verbose --hog --uri=\'/foo?foo=bar&bar=foo\' --num-conns=10',
-                    h.paramsToString());
-        test.expect(1);
-        test.done();
-    },
+    group.test('paramsToString', function(test) {
+        test.equal(httperf.paramsToString(),
+            '--server=localhost --port=80 --verbose --hog --uri=\'/foo?foo=bar&bar=foo\' --num-conns=10');
+        test.end();
+    });
 
-    "#parse": function (test) {
-        var h = new HTTPerf(default_options);
-        test.ok(h.parse);
-        h.parse = false;
-        test.equal(false, h.parse);
-        test.expect(2);
-        test.done();
-    },
+    group.test('paramsToArray', function(test) {
+        test.deepEqual(httperf.paramsToArray(),
+            [ '--server', 'localhost', '--port', 80, '--verbose', '--hog',
+                '--uri', '/foo?foo=bar&bar=foo', '--num-conns', 10 ]);
+        test.end();
+    });
 
-    "#update_option": function (test) {
+    group.test('parse', function(test) {
+        test.ok(httperf.parse, 'truthy');
+        test.notOk(httperf_san_parse.parse, 'falsy');
+        test.end();
+    });
+
+    group.test('update_option', function(test) {
         var h = new HTTPerf(default_options);
         h.update_option("num-conns", 100);
-        test.equal("100", h.params["num-conns"]);
-        test.expect(1);
-        test.done();
-    },
+        test.equal(100, h.params["num-conns"]);
+        test.end();
+    });
 
-    "#runSync -- with parse": function (test) {
-        var h = new HTTPerf(default_options);
-        var result = h.runSync();
-        test.ok( result );
-        test.ok( result.command );
-        test.ok( result.connection_time_avg );
-        test.expect(3);
-        test.done();
-    },
+    group.test('runSync w/ parse', function(test) {
+        var result = httperf.runSync();
+        test.ok(typeof result === 'object', 'returns object');
+        test.ok(result.command, 'has result.command');
+        test.ok(result.connection_time_avg, 'has result.connection_time_avg');
+        test.end();
+    });
 
-    "#runSync -- without parse": function (test) {
-        var h = new HTTPerf(default_options);
-        h.parse = false;
-        var result = h.runSync();
-        test.ok( result.indexOf("httperf --server=localhost --port=80") === 0 );
-        test.ok( result.indexOf("Connection time [ms]: min 0.2 avg 0.2 max 0.2 median 0.5 stddev 0.0") !== -1 );
-        test.expect(2);
-        test.done();
-    },
+    group.test('runSync w/o parse', function(test) {
+        var result = httperf_san_parse.runSync();
+        test.ok(typeof result === 'string', 'returns object');
+        test.end();
+    });
 
-    "#run -- with parse": function (test) {
-        test.expect(3);
-        var h = new HTTPerf(default_options);
-        h.run( function (result) {
-            test.ok(result);
-            test.ok(result.command);
-            test.ok(result.connection_time_avg);
-            test.done();
+    group.test('run w/ parse', function(test) {
+        httperf.run( function (result) {
+            test.ok(typeof result === 'object', 'returns object');
+            test.ok(result.command, 'has result.command');
+            test.ok(result.connection_time_avg, 'has result.connection_time_avg');
+            test.end();
         });
-    },
+    });
 
-    "#run -- without parse": function (test) {
-        test.expect(3);
-        var h = new HTTPerf(default_options);
-        h.parse = false;
-        h.run( function (result) {
-            test.ok(result);
-            test.ok(result.indexOf("httperf --server=localhost --port=80") === 0 );
-            test.ok(result.indexOf("Connection time [ms]: min 0.2 avg 0.2 max 0.2 median 0.5 stddev 0.0") !== -1 );
-            test.done();
+    group.test('run w/o parse', function(test) {
+        httperf_san_parse.run( function (result) {
+            test.ok(typeof result === 'string', 'returns object');
+            test.end();
         });
-    },
-};
+    });
+});
 
-// vim: ft=javascript
