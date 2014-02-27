@@ -1,5 +1,4 @@
-var HTTPerf = require('lib/httperf');
-var Parser  = require('lib/parser');
+var Parser = require('lib/httperf').Parser;
 var readFileSync = require('fs').readFileSync;
 
 process.env.PATH = "./test/support:"+process.env.PATH;
