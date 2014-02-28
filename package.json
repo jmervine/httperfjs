@@ -10,7 +10,7 @@
   "author": "Joshua Mervine <joshua@mervine.net> (http://mervine.net)",
   "main": "./lib/httperf.js",
   "devDependencies": {
-    "tape": "^2.5.0"
+    "tape": "~2.4.0"
   },
   "engines": {
     "node": ">= 0.8"
