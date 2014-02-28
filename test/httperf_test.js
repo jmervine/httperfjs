@@ -49,20 +49,6 @@ tape('HTTPerf', function(group) {
         test.end();
     });
 
-    group.test('runSync w/ parse', function(test) {
-        var result = httperf.runSync();
-        test.ok(typeof result === 'object', 'returns object');
-        test.ok(result.command, 'has result.command');
-        test.ok(result.connection_time_avg, 'has result.connection_time_avg');
-        test.end();
-    });
-
-    group.test('runSync w/o parse', function(test) {
-        var result = httperf_san_parse.runSync();
-        test.ok(typeof result === 'string', 'returns object');
-        test.end();
-    });
-
     group.test('run w/ parse', function(test) {
         httperf.run( function (result) {
             test.ok(typeof result === 'object', 'returns object');

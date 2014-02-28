@@ -13,21 +13,6 @@ var default_options = {
 
 var h, result;
 
-console.log("#runSync -- with parse");
-h = new HTTPerf(default_options);
-result = h.runSync();
-assert(typeof result === 'object', 'missing result');
-assert(result.command, 'missing result.command');
-assert(result.connection_time_avg, 'missing result.connection_time_avg');
-console.log('>> Successful.');
-
-console.log("#runSync -- without parse");
-h = new HTTPerf(default_options);
-h.parse = false;
-result = h.runSync();
-assert(typeof result === 'string', 'missing result');
-console.log('>> Successful.');
-
 console.log("#run -- with parse");
 h = new HTTPerf(default_options);
 h.run(function(result) {

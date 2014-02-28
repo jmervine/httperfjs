@@ -41,23 +41,6 @@ Tested on the following node versions (via [Travis-ci.org](http://travis-ci.org/
         "num-conns": 100}
     );
 
-    // Note:runSync is far less efficent because of
-    // how execSync.exec works. I do not recommend it
-    // when running larger/longer tests.
-    //
-    // This might be removed in a future release.
-    var first_run = httperf.runSync();
-    console.log(first_run);
-    // => { object with httperf values }
-
-    console.log(httperf.results);
-    // => { object with httperf values }
-
-    console.log(first_run.connection_time_avg);
-    // => '123.4'
-
-    httperf.update_option("uri", "/quotes");
-
     httperf.run(function (result) {
         console.log(result);
         console.log(result.connection_time_avg);
